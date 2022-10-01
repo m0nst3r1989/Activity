@@ -29,12 +29,37 @@ namespace Activity2
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            double pounds, total;
-            pounds = Convert.ToDouble(textBox2.Text);
-            total = pounds *V;
-            textBox1.Text = total.ToString();
             
+                double pounds, total;
+            if (double.TryParse(textBox2.Text, out total ))
+            {
+                pounds = (double)Convert.ToDecimal(textBox2.Text);
+                total = pounds * V;
+                textBox1.Text = total.ToString("n3");
+            }
+            else
+            {
+                string name = textBox1.Text.ToString();
+
+                MessageBox.Show("Please input a number!");
+            }
+        
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+  
+            // Clear the TextBox controls.
+                textBox2.Text = "";
+                textBox1.Text = "";
+                // Set the focus to userInputMiles.
+                textBox2.Focus();
+           
+        }
     }
 }
